@@ -1,0 +1,30 @@
+name: fantom-ia
+on:
+  schedule:
+    - cron: "17 8 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install google-genai ddgs requests
+      - run: python main.py
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          OWNER_EMAIL: ${{ secrets.OWNER_EMAIL }}
+      - name: guardar estado
+        if: always()
+        run: |
+          git config user.name "fantom-ia"
+          git config user.email "fantom-ia@users.noreply.github.com"
+          git add state.json 2>/dev/null || true
+          git diff --cached --quiet || (git commit -m "estado" && git push)
