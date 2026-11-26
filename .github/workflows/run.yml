@@ -15,7 +15,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install google-genai ddgs requests
-      - run: python main.py
+      - run: python run.py
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
