@@ -1,5 +1,27 @@
 {
- "sent": {},
+ "sent": {
+  "info@sinergiavisual.com": {
+   "angle": "demo",
+   "url": "https://www.sinergiavisual.com/about-us/roland-distributors/",
+   "query": "tiendas autorizadas Roland España sintetizadores email contacto",
+   "date": "2026-11-26",
+   "replied": false
+  },
+  "info@microfusa.com": {
+   "angle": "resena",
+   "url": "https://www.microfusa.com/pages/contacto",
+   "query": "tiendas música Madrid Barcelona teclados sintetizadores email contacto",
+   "date": "2026-11-26",
+   "replied": false
+  },
+  "web@musicsales.es": {
+   "angle": "resena",
+   "url": "https://musicsales.es/content/tienda-instrumentos-musicales-barcelona",
+   "query": "tiendas música Madrid Barcelona teclados sintetizadores email contacto",
+   "date": "2026-11-26",
+   "replied": false
+  }
+ },
  "blocked": [],
  "queries": [
   "distribuidor oficial Roland España teclados sintetizadores contacto",
@@ -7,10 +29,17 @@
   "tienda música Vigo Galicia instrumentos teclados contacto",
   "blog sintetizadores teclados España colaboraciones contacto",
   "revista música electrónica tecnología España redacción contacto",
-  "youtuber teclados sintetizadores España contacto negocios"
+  "youtuber teclados sintetizadores España contacto negocios",
+  "distribuidor Roland España tiendas especializadas sintetizadores contacto",
+  "tiendas autorizadas Roland España sintetizadores email contacto",
+  "tiendas música Madrid Barcelona teclados sintetizadores email contacto",
+  "tiendas música Valencia Sevilla instrumentos teclado contacto email",
+  "distribuidores oficiales Roland instrumentos musicales España contacto",
+  "tiendas música Bilbao Málaga Zaragoza teclados sintetizadores email"
  ],
  "replies": [],
  "log": [
-  "2026-11-25: enviados 0"
+  "2026-11-25: enviados 0",
+  "2026-11-26: enviados 4"
  ]
 }
