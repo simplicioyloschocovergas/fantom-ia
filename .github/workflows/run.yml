@@ -5,27 +5,39 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
+concurrency:
+  group: fantom-ia
+  cancel-in-progress: false
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        continue-on-error: true
+        with:
+          repository: ${{ github.repository_owner }}/simplicio
+          token: ${{ secrets.PUBLIC_REPO_TOKEN }}
+          path: pub
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install google-genai ddgs requests
-      - run: python run.py
+      - run: pip install google-genai ddgs requests pillow
+      - run: python agente.py
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           OWNER_EMAIL: ${{ secrets.OWNER_EMAIL }}
-          GEMINI_MODEL: gemini-3.8-flash
+          PUBLIC_REPO_TOKEN: ${{ secrets.PUBLIC_REPO_TOKEN }}
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          SUPPORT_URL: ${{ secrets.SUPPORT_URL }}
       - name: guardar estado
         if: always()
         run: |
           git config user.name "fantom-ia"
           git config user.email "fantom-ia@users.noreply.github.com"
-          git add state.json 2>/dev/null || true
-          git diff --cached --quiet || (git commit -m "estado" && git push)
+          git add state.json strategy.json enviados.jsonl evolution_log.md 2>/dev/null || true
+          git diff --cached --quiet || (git commit -m "estado" && git pull --rebase && git push)
