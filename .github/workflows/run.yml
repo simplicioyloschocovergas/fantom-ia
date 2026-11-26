@@ -21,6 +21,7 @@ jobs:
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           OWNER_EMAIL: ${{ secrets.OWNER_EMAIL }}
+          GEMINI_MODEL: gemini-3.8-flash
       - name: guardar estado
         if: always()
         run: |
